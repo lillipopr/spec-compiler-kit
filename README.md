@@ -53,32 +53,46 @@
 ```
 spec-compiler-kit/
 ├── .claude-plugin/
-│   └── plugin.json          # 插件元数据
-├── agents/                   # 执行代理
-│   ├── spec-prd-agent.md
-│   ├── spec-ddd-agent.md
-│   ├── spec-modeling-agent.md
-│   ├── spec-artifact-agent.md
-│   └── spec-test-agent.md
-├── commands/                 # 用户命令
-│   ├── spec.md              # 主入口（智能路由）
-│   ├── spec-new.md          # 首次功能建设
-│   ├── spec-iter.md         # 功能迭代
-│   ├── spec-fix.md          # Bug 修复
-│   ├── spec-offline.md      # 功能下线
-│   └── spec-review.md       # 审查规格文档
-├── skills/                   # 技能包
-│   ├── spec-compiler/       # 规格编译器 v2
-│   ├── spec-compiler-v3/    # 规格编译器 v3
-│   └── product-spec-kit/    # 产品规格套件
-├── templates/                # 文档模板
-├── references/               # 方法论参考
-└── rules/                    # 架构规范
-    └── architecture/         # 分层架构规范
+│   └── plugin.json              # 插件元数据
+├── README.md                     # 项目说明
+├── commands/                     # 【用户命令层】面向用户的入口
+│   ├── spec.md                  # 主命令（智能路由）
+│   ├── spec-new.md              # 首次功能建设
+│   ├── spec-iter.md             # 功能迭代
+│   ├── spec-fix.md              # Bug 修复
+│   ├── spec-offline.md          # 功能下线
+│   └── spec-review.md           # 规格审查
+├── agents/                       # 【执行代理层】可被 commands 调用的独立代理
+│   ├── spec-prd-agent.md        # PRD 产出代理
+│   ├── spec-ddd-agent.md        # DDD 设计代理
+│   ├── spec-modeling-agent.md   # 规格建模代理
+│   ├── spec-artifact-agent.md   # 工件推导代理
+│   ├── spec-test-agent.md       # 测试生成代理
+│   └── spec-review-agent.md     # 规格审查代理
+├── skills/                       # 【技能库层】共享知识、方法论、模板
+│   └── spec-compiler/           # 规格编译器核心技能
+│       ├── SKILL.md             # 技能入口
+│       ├── rules/               # 核心原则
+│       ├── methodology/         # 方法论文档
+│       ├── workflows/           # 场景工作流
+│       ├── stages/              # 阶段详解
+│       ├── domain/              # 领域特化
+│       └── templates/           # 文档模板
+└── rules/                        # 【架构规范层】通用架构规范
+    └── architecture/
         ├── java-ddd-layers.md
         ├── ios-mvvm-layers.md
         └── vue3-layers.md
 ```
+
+### 各层职责说明
+
+| 层级 | 目录 | 职责 | 关系 |
+|------|------|------|------|
+| **用户命令层** | `commands/` | 面向用户的 `/spec-*` 命令入口 | 调用 agents 或 skills |
+| **执行代理层** | `agents/` | 独立可复用的 AI 代理 | 被 commands 或 skills 调用 |
+| **技能库层** | `skills/` | 共享方法论、模板、工作流 | 被 agents 引用 |
+| **架构规范层** | `rules/` | 技术栈无关的架构规范 | 跨项目共享 |
 
 ## 使用方式
 
@@ -193,22 +207,16 @@ Stage N 完成 → 输出产出物 → 提醒用户 Review → 等待确认 → 
 - `spec-offline.md` - 功能下线
 - `spec-review.md` - 审查规格文档
 
-### Skills（技能包）
+### Skills（技能库层）
 
 #### spec-compiler/
 - `SKILL.md` - 入口：理念 + 流程编排
 - `rules/` - 核心原则
 - `workflows/` - 完整工作流（按场景）
-- `stages/` - 阶段详解
-- `methodology/` - 方法论参考
+- `stages/` - 阶段详解（01-prd ~ 05-test-generation）
+- `methodology/` - 方法论文档（不变量、实体提取、状态空间设计等）
 - `domain/` - 领域特化
 - `templates/` - 文档模板
-
-#### spec-compiler-v3/
-- V3 版本，包含更新的方法论和参考文档
-
-#### product-spec-kit/
-- 产品规格套件，支持 PRD 创建和管理
 
 ## 许可证
 
