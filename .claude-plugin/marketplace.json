@@ -15,7 +15,7 @@
       "name": "spec-compiler-kit",
       "description": "规格编译器套件：将模糊需求编译为确定性规格文档，实现'人管变化，AI 写实现'",
       "version": "2.0.0",
-      "source": "./",
+      "source": "./plugins/spec-compiler-kit",
       "strict": false,
       "author": {
         "name": "zxq",

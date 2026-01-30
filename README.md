@@ -54,61 +54,66 @@
 
 ## 插件结构
 
+### Marketplace 结构（支持 `/plugin marketplace add`）
+
 ```
 spec-compiler-kit/
-├── .claude-plugin/               # 【插件配置】v2.0 插件化支持
-│   ├── plugin.json              # 插件元数据（v2.0 规范）
-│   ├── marketplace.json         # Marketplace 配置（支持 hooks 安装）
+├── .claude-plugin/               # Marketplace 配置
+│   ├── marketplace.json         # Marketplace 配置（source: "./plugins/spec-compiler-kit"）
 │   ├── README.md                # 插件开发指南
 │   ├── HOOKS.md                 # Hooks 开发规范
 │   ├── VERSIONING.md            # 版本管理规范
-│   ├── PUBLISHING.md            # 发布流程指南
-│   ├── hooks/                   # Hooks 配置目录
-│   │   ├── hooks.json           # Hook 执行配置（PreToolUse）
-│   │   ├── pre-tool-use/        # Hook 定义文档
-│   │   │   ├── phase-review-check.md
-│   │   │   └── architecture-check.md
-│   │   ├── post-tool-use/       # 工具执行后钩子
-│   │   ├── session-start/       # 会话开始钩子
-│   │   └── session-end/         # 会话结束钩子
-│   └── scripts/
-│       ├── hooks/               # 可执行 Hook 脚本
-│       │   ├── phase-review-check.js    # Phase 审查闸口
-│       │   ├── architecture-check.js    # 架构分层检查
-│       │   └── README.md               # Hooks 使用说明
-│       ├── pre-install.sh
-│       ├── post-install.sh
-│       └── pre-uninstall.sh
-├── README.md                     # 项目说明
-├── CHANGELOG.md                  # 版本变更记录
-├── commands/                     # 【Command 层】用户命令入口
-│   ├── prd.md                   # 产品经理命令
-│   ├── ddd.md                   # 领域架构师命令
-│   ├── spec.md                  # 规格编译器命令
-│   ├── tdd.md                   # TDD 专家命令
-│   ├── java.md                  # Java 工程师命令
-│   ├── ios.md                   # iOS 工程师命令
-│   └── front.md                 # 前端工程师命令
-├── agents/                       # 【Agent 层】按角色命名的执行代理
-│   ├── product-manager.md       # 产品经理
-│   ├── domain-architect.md      # 领域架构师
-│   ├── spec-compiler-v4.md      # 规格编译器
-│   ├── tdd-expert.md            # TDD 专家
-│   ├── java-expert.md           # Java 专家
-│   ├── ios-expert.md            # iOS 专家
-│   └── frontend-expert.md       # 前端专家
-├── skills/                       # 【Skill 层】按角色配备的知识库
-│   ├── for-product-manager/     # 产品经理知识库
-│   ├── for-domain-architect/    # 领域架构师知识库
-│   ├── for-spec-compiler-v4/    # 规格编译器知识库
-│   ├── for-tdd-expert/          # TDD 专家知识库
-│   ├── for-java-expert/         # Java 专家知识库
-│   ├── for-ios-expert/          # iOS 专家知识库
-│   └── for-frontend-expert/     # 前端专家知识库
-└── tools/                        # 【Tools 层】工具封装
-    ├── file-tools/              # 文件操作工具
-    ├── search-tools/            # 搜索工具
-    └── validation-tools/        # 验证工具
+│   └── PUBLISHING.md            # 发布流程指南
+├── plugins/                      # 【必需】Marketplace 插件目录
+│   └── spec-compiler-kit/       # 插件子目录（source 指向这里）
+│       ├── .claude-plugin/
+│       │   ├── plugin.json      # 插件元数据（v2.0 规范）
+│       │   ├── hooks/           # Hooks 配置目录
+│       │   │   ├── hooks.json   # Hook 执行配置（PreToolUse）
+│       │   │   ├── pre-tool-use/
+│       │   │   ├── post-tool-use/
+│       │   │   ├── session-start/
+│       │   │   └── session-end/
+│       │   └── scripts/
+│       │       ├── hooks/       # 可执行 Hook 脚本
+│       │       │   ├── phase-review-check.js
+│       │       │   ├── architecture-check.js
+│       │       │   └── README.md
+│       │       ├── pre-install.sh
+│       │       ├── post-install.sh
+│       │       └── pre-uninstall.sh
+│       │   ├── commands/            # 【Command 层】用户命令入口
+│       │   │   ├── prd.md                   # 产品经理命令
+│       │   │   ├── ddd.md                   # 领域架构师命令
+│       │   │   ├── spec.md                  # 规格编译器命令
+│       │   │   ├── tdd.md                   # TDD 专家命令
+│       │   │   ├── java.md                  # Java 工程师命令
+│       │   │   ├── ios.md                   # iOS 工程师命令
+│       │   │   └── front.md                 # 前端工程师命令
+│       │   ├── agents/               # 【Agent 层】按角色命名的执行代理
+│       │   │   ├── product-manager.md       # 产品经理
+│       │   │   ├── domain-architect.md      # 领域架构师
+│       │   │   ├── spec-compiler-v4.md      # 规格编译器
+│       │   │   ├── tdd-expert.md            # TDD 专家
+│       │   │   ├── java-expert.md           # Java 专家
+│       │   │   ├── ios-expert.md            # iOS 专家
+│       │   │   └── frontend-expert.md       # 前端专家
+│       │   ├── skills/               # 【Skill 层】按角色配备的知识库
+│       │   │   ├── for-product-manager/     # 产品经理知识库
+│       │   │   ├── for-domain-architect/    # 领域架构师知识库
+│       │   │   ├── for-spec-compiler-v4/    # 规格编译器知识库
+│       │   │   ├── for-tdd-expert/          # TDD 专家知识库
+│       │   │   ├── for-java-expert/         # Java 专家知识库
+│       │   │   ├── for-ios-expert/          # iOS 专家知识库
+│       │   │   └── for-frontend-expert/     # 前端专家知识库
+│       │   ├── tools/                # 【Tools 层】工具封装
+│       │   │   ├── file-tools/              # 文件操作工具
+│       │   │   ├── search-tools/            # 搜索工具
+│       │   │   └── validation-tools/        # 验证工具
+│       │   └── rules/                # 【可选】用户规则配置
+│       ├── README.md                     # 项目说明
+│       ├── CHANGELOG.md                  # 版本变更记录
+│       └── install.sh                    # 本地安装脚本
 ```
 
 ### 各层职责说明
@@ -124,31 +129,31 @@ spec-compiler-kit/
 
 ### 安装
 
-#### 方式一：Local Marketplace（本地开发）
+#### 方式一：从 Marketplace 安装（推荐）
 
 ```bash
-# 创建符号链接到 local marketplace
-ln -s /path/to/spec-compiler-kit ~/.claude/plugins/local/spec-compiler-kit
-
-# 验证安装
-claude-code --plugin list
-```
-
-#### 方式二：直接安装
-
-```bash
-# 从 GitHub 直接安装
-/plugin install https://github.com/lillipopr/spec-compiler-kit
-```
-
-#### 方式三：Public Marketplace（即将推出）
-
-```bash
-# 添加官方 Marketplace
-/plugin marketplace add https://github.com/lillipopr/spec-compiler-plugins
+# 添加 Marketplace
+/plugin marketplace add https://github.com/lillipopr/spec-compiler-kit
 
 # 安装插件
 /plugin install spec-compiler-kit
+```
+
+#### 方式二：本地符号链接（推荐用于开发）
+
+```bash
+# 克隆仓库
+git clone https://github.com/lillipopr/spec-compiler-kit ~/spec-compiler-kit
+
+# 执行安装脚本（自动创建符号链接）
+cd ~/spec-compiler-kit
+./install.sh
+
+# 或手动创建符号链接（指向 plugins/spec-compiler-kit 子目录）
+mkdir -p ~/.claude/plugins/local
+ln -s ~/spec-compiler-kit/plugins/spec-compiler-kit ~/.claude/plugins/local/spec-compiler-kit
+
+# 重启 Claude Code 后自动加载
 ```
 
 ### 验证安装
@@ -239,7 +244,7 @@ claude-code --plugin list
 违规: com.example.mapper.UserMapper (Controller 只能调用 Application)
 ```
 
-> 详细说明请参考 [Hooks 使用指南](.claude-plugin/scripts/hooks/README.md)
+> 详细说明请参考 [Hooks 使用指南](plugins/spec-compiler-kit/.claude-plugin/scripts/hooks/README.md)
 
 ## 核心原则
 
@@ -331,7 +336,7 @@ Stage N 完成 → 输出产出物 → 提醒用户 Review → 等待确认 → 
 |------|------|
 | [插件开发指南](.claude-plugin/README.md) | 插件架构、组件说明、开发工作流 |
 | [Hooks 开发规范](.claude-plugin/HOOKS.md) | Hook 类型、编写规范、最佳实践 |
-| [Hooks 使用指南](.claude-plugin/scripts/hooks/README.md) | Hook 脚本使用、配置、调试 |
+| [Hooks 使用指南](plugins/spec-compiler-kit/.claude-plugin/scripts/hooks/README.md) | Hook 脚本使用、配置、调试 |
 | [版本管理规范](.claude-plugin/VERSIONING.md) | 版本号格式、发布流程、升级指南 |
 | [发布流程指南](.claude-plugin/PUBLISHING.md) | 发布方式、Marketplace 配置、更新流程 |
 | [变更记录](CHANGELOG.md) | 版本历史、功能变更、迁移指南 |
