@@ -1,71 +1,8 @@
 {
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
-
   "name": "spec-compiler-kit",
-  "displayName": "规格编译器套件",
-  "version": "2.0.0",
   "description": "将模糊需求编译为确定性规格文档，实现'人管变化，AI 写实现'",
-  "category": "workflow",
-
   "author": {
     "name": "zxq",
-    "email": "zxq@olzx-ai.com",
-    "url": "https://github.com/lillipopr"
-  },
-
-  "homepage": "https://github.com/lillipopr/spec-compiler-kit",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lillipopr/spec-compiler-kit.git"
-  },
-  "bugs": "https://github.com/lillipopr/spec-compiler-kit/issues",
-  "license": "MIT",
-
-  "keywords": [
-    "spec",
-    "compiler",
-    "ddd",
-    "modeling",
-    "architecture",
-    "tdd",
-    "java",
-    "ios",
-    "frontend",
-    "vue",
-    "swift"
-  ],
-
-  "engines": {
-    "claude-code": ">=1.0.0"
-  },
-
-  "strict": false,
-
-  "skills": ["./skills/"],
-  "commands": ["./commands/"],
-  "agents": ["./agents/"],
-  "hooks": ["./.claude-plugin/hooks/"],
-
-  "dependencies": {},
-  "peerDependencies": {},
-
-  "scripts": {
-    "preinstall": "./.claude-plugin/scripts/pre-install.sh",
-    "postinstall": "./.claude-plugin/scripts/post-install.sh",
-    "preuninstall": "./.claude-plugin/scripts/pre-uninstall.sh"
-  },
-
-  "features": {
-    "hooks": true,
-    "commands": true,
-    "marketplace": true,
-    "agents": true
-  },
-
-  "config": {
-    "defaultPhaseTimeout": 300,
-    "enableAutoReview": true,
-    "architectureCheckStrict": false,
-    "phaseReviewRequired": true
+    "email": "zxq@olzx-ai.com"
   }
 }
