@@ -74,7 +74,7 @@
     └─ 否 → 可能是实体
 ```
 
-**参考文档**：[references/methodology/entity-extraction.md](references/methodology/entity-extraction.md)
+**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -105,7 +105,7 @@
 |---------|--------|---------|-----------|
 | {聚合1} | {聚合根实体} | 包含的实体/值对象 | {不变量描述} |
 
-**参考文档**：[references/methodology/aggregate-design.md](references/methodology/aggregate-design.md)
+**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -258,7 +258,7 @@ stateDiagram-v2
 | -------- | ---- | ------ | -------- |
 | {行为1}() | {参数列表} | {返回类型} | {业务规则描述} |
 
-**参考文档**：[references/methodology/entity-extraction.md](references/methodology/entity-extraction.md)
+**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -289,7 +289,7 @@ stateDiagram-v2
 |-------|------|------|-------|---------|
 | STR-{VO缩写}-01 | 结构约束 | {约束描述} | `ASSERT {条件表达式}` | 创建时 |
 
-**参考文档**：[references/methodology/vo-design.md](references/methodology/vo-design.md)
+**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -488,7 +488,7 @@ create(params: { {参数1}: {类型1}, {参数2}: {类型2} }): {聚合根名称
 
 ### 评分标准
 
-使用 [references/scoring/tactical-scoring.md](references/scoring/tactical-scoring.md) 评分。
+使用 [references/scoring/chapter-02-scoring.md](references/scoring/chapter-02-scoring.md) 评分。
 
 **及格线**：60 分
 

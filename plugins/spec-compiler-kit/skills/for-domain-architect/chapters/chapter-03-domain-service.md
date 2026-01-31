@@ -216,7 +216,7 @@
 
 ### 评分标准
 
-使用 [references/scoring/tactical-scoring.md](references/scoring/tactical-scoring.md) 评分。
+使用 [references/scoring/chapter-03-scoring.md](references/scoring/chapter-03-scoring.md) 评分。
 
 **及格线**：60 分
 

@@ -82,7 +82,7 @@
 - 会员激活Event（中文，不符合代码规范）
 ```
 
-**参考文档**：[references/methodology/domain-event.md](references/methodology/domain-event.md)
+**参考文档**：[references/principles/domain-event.md](references/principles/domain-event.md)
 
 ---
 
@@ -235,7 +235,7 @@ class CouponEventHandler {
 
 ### 评分标准
 
-使用 [references/scoring/tactical-scoring.md](references/scoring/tactical-scoring.md) 评分。
+使用 [references/scoring/chapter-05-scoring.md](references/scoring/chapter-05-scoring.md) 评分。
 
 **及格线**：60 分
 

@@ -84,7 +84,7 @@
 |--------|----------|----------|----------|
 | {能力组1} | {团队A} | {人数} | {联系方式} |
 
-**参考文档**：[references/methodology/business-capability.md](references/methodology/business-capability.md)
+**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
@@ -105,7 +105,7 @@
 - 上下文间低耦合
 - 上下文边界清晰
 
-**参考文档**：[references/methodology/bounded-context.md](references/methodology/bounded-context.md)
+**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
@@ -166,7 +166,7 @@
 |-----------|-----------|---------|
 | {位置} | {上下文C} | 将 C 的 DTO 转换为本域的领域模型 |
 
-**参考文档**：[references/methodology/context-mapping.md](references/methodology/context-mapping.md)
+**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
