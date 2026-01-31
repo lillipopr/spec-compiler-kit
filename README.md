@@ -133,24 +133,12 @@ spec-compiler/
 
 ```bash
 # 添加 Marketplace
-/plugin marketplace add https://github.com/lillipopr/spec-compiler
+/plugin marketplace add https://github.com/lillipopr/lollipopr-claude
 
 # 安装插件
 /plugin install spec-compiler
 ```
 
-#### 方式二：本地符号链接（推荐用于开发）
-
-```bash
-# 克隆仓库
-git clone https://github.com/lillipopr/spec-compiler ~/spec-compiler
-
-# 或手动创建符号链接（指向 plugins/spec-compiler 子目录）
-mkdir -p ~/.claude/plugins/local
-ln -s ~/spec-compiler/plugins/spec-compiler ~/.claude/plugins/local/spec-compiler
-
-# 重启 Claude Code 后自动加载
-```
 
 ### 验证安装
 
