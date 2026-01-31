@@ -46,7 +46,7 @@
 
 | 角色 | 推荐文档 | 说明 |
 |------|---------|------|
-| **首次使用者** | [工作流总览](workflow-main.md) | 了解完整工作流程 |
+| **首次使用者** | [Task 工作流](task-based-workflow.md) | 了解基于任务的工作流程 |
 | **生成文档** | [生成流程](workflow-generation.md) | 按步骤生成领域设计文档 |
 | **评分评估** | [评估流程](workflow-evaluation.md) | 对文档进行评分和质量评估 |
 | **修改优化** | [修改流程](workflow-modification.md) | 基于反馈迭代修改文档 |
@@ -55,10 +55,11 @@
 
 | 我想... | 查看文档 |
 |---------|---------|
-| 了解完整工作流程 | [工作流总览](workflow-main.md) |
+| 了解基于任务的工作流 | [Task 工作流](task-based-workflow.md) |
 | 从 PRD 生成设计文档 | [生成流程](workflow-generation.md) |
 | 对设计文档评分 | [评估流程](workflow-evaluation.md) |
 | 修改设计文档 | [修改流程](workflow-modification.md) |
+| 优化上下文管理 | [上下文优化](context-optimization.md) |
 | 了解如何分析 PRD | [生成流程 - Step 1](workflow-generation.md#step-1prd-分析) |
 | 了解如何评分 | [评估流程 - Step 1](workflow-evaluation.md#step-1章节评分) |
 | 了解如何修改 | [修改流程 - Step 3](workflow-modification.md#step-3增量修改) |
@@ -101,17 +102,18 @@
 
 ## 文档详情
 
-### 1. 工作流总览
+### 1. Task 工作流 ⭐
 
-**文件**：[workflow-main.md](workflow-main.md)
+**文件**：[task-based-workflow.md](task-based-workflow.md)
 
 **内容**：
-- 完整工作流程图
-- 生成、评估、Review、修改四个阶段
-- 质量控制机制
-- 支持文档索引
+- 任务拆分策略（9个独立任务）
+- 任务依赖管理
+- 质量关卡机制
+- 进度跟踪显示
+- 错误处理与重试
 
-**适合**：首次了解工作流
+**适合**：确保每个步骤保质保量完成
 
 ---
 
@@ -293,7 +295,7 @@
 3. **Review 流程**：用户 Review 并提出修改意见
 4. **修改流程**：基于反馈迭代修改文档
 
-详见：[工作流总览](workflow-main.md)
+详见：[Task 工作流](task-based-workflow.md) 或各个具体流程文档
 
 ### Q2：如何生成领域设计文档？
 
