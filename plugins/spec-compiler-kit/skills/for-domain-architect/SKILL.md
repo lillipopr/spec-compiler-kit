@@ -20,10 +20,10 @@ description: 资深领域架构师，负责将 PRD 文档转化为完整的《�
 
 ## 质量保证机制
 
-**90 分及格线**：每章独立评分，全部完成后综合评分，任一章 < 60 分则不合格。
+**90 分及格线**：每章独立评分 ≥60 分，综合评分 ≥90 分交付。
 
 ```
-综合评分 = (Chapter-1 + Chapter-2 + Chapter-3 + Chapter-4 + Chapter-5 + Chapter-6) / 6
+综合评分 = Chapter-1 × 15% + Chapter-2 × 25% + Chapter-3 × 10% + Chapter-4 × 15% + Chapter-5 × 10% + Chapter-6 × 10% + 设计一致性 × 15%
 ```
 
 ---
@@ -94,14 +94,15 @@ description: 资深领域架构师，负责将 PRD 文档转化为完整的《�
 | [references/scoring/constraint-scoring.md](references/scoring/constraint-scoring.md) | 第二章、第三章、第四章 | 100 |
 | [references/scoring/use-case-scoring.md](references/scoring/use-case-scoring.md) | 第二章、第三章、第四章 | 100 |
 
-### SOP 文档
+### 工作流文档
 
 | 文件 | 说明 |
 |------|------|
-| [references/sop/sop-document-workflow.md](references/sop/sop-document-workflow.md) | 完整工作流程 |
-| [references/sop/sop-main-flow.md](references/sop/sop-main-flow.md) | 主流程 SOP |
-| [references/sop/sop-constraints.md](references/sop/sop-constraints.md) | 约束定义 SOP |
-| [references/sop/sop-use-cases.md](references/sop/sop-use-cases.md) | 用例设计 SOP |
+| [references/workflow/README.md](references/workflow/README.md) | **工作流索引**：快速导航和常见问题 |
+| [references/workflow/workflow-main.md](references/workflow/workflow-main.md) | **工作流总览**：生成 → 评估 → Review → 修改 |
+| [references/workflow/workflow-generation.md](references/workflow/workflow-generation.md) | **生成流程**：从 PRD 到领域设计文档 |
+| [references/workflow/workflow-evaluation.md](references/workflow/workflow-evaluation.md) | **评估流程**：章节评分 + 综合评分 |
+| [references/workflow/workflow-modification.md](references/workflow/workflow-modification.md) | **修改流程**：基于反馈的迭代修改 |
 
 ### 输出模板
 
