@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "spec-compiler-kit-marketplace",
-  "description": "Spec Compiler Kit - 将模糊需求编译为确定性规格文档",
+  "name": "lollipopr-claude-marketplace",
+  "description": "LollipopR Claude Marketplace",
   "owner": {
     "name": "zxq",
     "email": "zxq@olzx-ai.com"
@@ -16,7 +16,7 @@
       },
       "source": "./plugins/spec-compiler",
       "category": "workflow",
-      "homepage": "https://github.com/lillipopr/spec-compiler-kit"
+      "homepage": "https://github.com/lillipopr/lollipopr-claude"
     }
   ]
 }
