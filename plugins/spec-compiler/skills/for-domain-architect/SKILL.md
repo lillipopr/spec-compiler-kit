@@ -1,6 +1,6 @@
 ---
 name: for-domain-architect
-description: 资深领域架构师，将 PRD 转化为领域设计文档。支持 5 章结构生成、每章 3×PDCA 循环、质量评分、人工 Review、22 任务工作流。当用户需要进行领域建模、DDD 设计、聚合设计、限界上下文划分时触发。
+description: 资深领域架构师，将 PRD 转化为领域设计文档。支持 5 章结构生成、Checklists 驱动的 PDCA 循环、人工 Review、12 任务工作流。当用户需要进行领域建模、DDD 设计、聚合设计、限界上下文划分时触发。
 ---
 
 # 资深领域架构师 Skill
@@ -19,12 +19,7 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 
 ## 质量保证机制
 
-**90 分及格线**：每章独立评分 ≥60 分，综合评分 ≥90 分交付。
-
-```
-综合评分 = Chapter-1 × 15% + Chapter-2 × 30% + Chapter-3 × 10% +
-           Chapter-4 × 20% + Chapter-5 × 10% + 设计一致性 × 15%
-```
+**检查清单驱动**：每章通过检查清单验证，确保内容完整且符合要求。
 
 ---
 
@@ -40,24 +35,21 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 
 ### 执行流程
 ```
-PRD 文档 → Roadmap 生成 → PRD 摘要 → 逐章生成（5 章 × 3×PDCA）
-→ 综合评分 → 文档组装
+PRD 文档 → Roadmap 生成 → PRD 摘要 → 逐章生成（5 章 × Checklists）
+→ 文档组装
 ```
 
-### 任务结构（22 个任务）
+### 任务结构（12 个任务）
 - **T1**: PRD 分析与摘要
-- **T2-T5**: 第一章 - 限界上下文设计（4 个任务）
-- **T6-T9**: 第二章 - 聚合设计（4 个任务）
-- **T10-T13**: 第三章 - 领域服务设计（4 个任务）
-- **T14-T17**: 第四章 - 应用层设计（4 个任务）
-- **T18-T21**: 第五章 - 入口层设计（4 个任务）
-- **T22**: 综合评分
-- **T23**: 文档组装
+- **T2-T3**: 第一章 - 限界上下文设计（2 个任务：PDCA + Review）
+- **T4-T5**: 第二章 - 聚合设计（2 个任务：PDCA + Review）
+- **T6-T7**: 第三章 - 领域服务设计（2 个任务：PDCA + Review）
+- **T8-T9**: 第四章 - 应用层设计（2 个任务：PDCA + Review）
+- **T10-T11**: 第五章 - 入口层设计（2 个任务：PDCA + Review）
+- **T12**: 文档组装
 
-每章经历 **3×PDCA 循环**：
-- **PDCA #1**: Principles 检测（基于设计原则检测并修复问题）
-- **PDCA #2**: Checklists 检测（基于检查清单检测并修复问题）
-- **PDCA #3**: Scoring 检测（基于评分标准评分，≥60 分通过）
+每章经历 **1 个 PDCA 循环**：
+- **PDCA**: Checklists 检测（基于检查清单检测并修复问题）
 
 每章完成后需要 **人工 Review** 确认。
 
@@ -71,7 +63,7 @@ PRD 文档 → Roadmap 生成 → PRD 摘要 → 逐章生成（5 章 × 3×PDCA
 
 1. 📖 [工作流索引](references/workflow/README.md) - 快速导航和常见问题
 2. 📖 [Roadmap 工作流](references/workflow/roadmap-workflow.md) - Roadmap 生成和进度展示
-3. 📖 [PDCA 章节生成](references/workflow/pdca-chapter-generation.md) - 3×PDCA 质量循环详解
+3. 📖 [PDCA 章节生成](references/workflow/pdca-chapter-generation.md) - Checklists 驱动的 PDCA 循环
 4. 📖 [Task 管理规范](references/workflow/task-management.md) - Task 定义和执行规范
 
 ### 第二步：生成 Roadmap
@@ -83,8 +75,8 @@ PRD 文档 → Roadmap 生成 → PRD 摘要 → 逐章生成（5 章 × 3×PDCA
 
 ## 概览
 - **目标**：从 PRD 生成领域设计文档
-- **预计步骤**：22 个任务
-- **质量关卡**：每章 ≥60 分，综合 ≥90 分
+- **预计步骤**：12 个任务
+- **质量关卡**：每章通过检查清单
 
 ## 执行计划
 （详见 roadmap-workflow.md 中的模板）
@@ -92,24 +84,22 @@ PRD 文档 → Roadmap 生成 → PRD 摘要 → 逐章生成（5 章 × 3×PDCA
 
 ### 第三步：创建任务（TaskCreate）
 
-创建 **22 个任务**，任务依赖关系：
+创建 **12 个任务**，任务依赖关系：
 
 ```
 T1: PRD 分析与摘要（无依赖）
   ↓
-T2-T5: 第一章（T2 依赖 T1，T3 依赖 T2，...）
+T2-T3: 第一章（T2 依赖 T1）
   ↓
-T6-T9: 第二章（依赖 T5）
+T4-T5: 第二章（依赖 T3）
   ↓
-T10-T13: 第三章（依赖 T9）
+T6-T7: 第三章（依赖 T5）
   ↓
-T14-T17: 第四章（依赖 T13）
+T8-T9: 第四章（依赖 T7）
   ↓
-T18-T21: 第五章（依赖 T17）
+T10-T11: 第五章（依赖 T9）
   ↓
-T22: 综合评分（依赖 T21）
-  ↓
-T23: 文档组装（依赖 T22）
+T12: 文档组装（依赖 T11）
 ```
 
 ### 第四步：执行任务循环
@@ -129,11 +119,10 @@ T23: 文档组装（依赖 T22）
 2. 等待用户确认
 3. 根据用户反馈决定下一步
 
-### 第六步：综合评分和文档组装
+### 第六步：文档组装
 
-1. 计算综合评分（≥90 分交付）
-2. 使用模板组装最终文档
-3. 输出文档路径
+1. 使用模板组装最终文档
+2. 输出文档路径
 
 ---
 
@@ -144,48 +133,37 @@ T23: 文档组装（依赖 T22）
 | 文件 | 说明 | 优先级 |
 |------|------|--------|
 | [references/workflow/README.md](references/workflow/README.md) | **工作流索引**：快速导航和常见问题 | ⭐⭐⭐ |
-| [references/workflow/context-optimization.md](references/workflow/context-optimization.md) | **上下文优化**：避免上下文撑爆 | ⭐⭐⭐ |
+| [references/workflow/context-optimization.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/context-optimization.md) | **上下文优化**：避免上下文撑爆 | ⭐⭐⭐ |
 | [references/workflow/roadmap-workflow.md](references/workflow/roadmap-workflow.md) | **Roadmap 工作流**：Roadmap 生成和进度展示 | ⭐⭐⭐ |
-| [references/workflow/pdca-chapter-generation.md](references/workflow/pdca-chapter-generation.md) | **PDCA 章节生成**：3×PDCA 质量循环详解 | ⭐⭐⭐ |
+| [references/workflow/pdca-chapter-generation.md](references/workflow/pdca-chapter-generation.md) | **PDCA 章节生成**：Checklists 驱动的 PDCA 循环 | ⭐⭐⭐ |
 | [references/workflow/task-management.md](references/workflow/task-management.md) | **Task 管理规范**：Task 定义和执行规范 | ⭐⭐⭐ |
 
 ### 设计原则（按章节分类）
 
 | 章节 | 原则文件 | 说明 |
 |------|---------|------|
-| 第一章 | [references/principles/bounded-context.md](references/principles/bounded-context.md) | 限界上下文相关原则 |
-| 第二章 | [references/principles/aggregate.md](references/principles/aggregate.md) | 聚合相关原则（包含事件发布） |
-| 第三章 | [references/principles/domain-service.md](references/principles/domain-service.md) | 领域服务相关原则 |
-| 第四章 | [references/principles/application.md](references/principles/application.md) | 应用层相关原则（包含事件处理） |
-| 第五章 | [references/principles/starter.md](references/principles/starter.md) | 入口层（Starter 层）相关原则 |
+| 第一章 | [references/principles/bounded-context.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/principles/bounded-context.md) | 限界上下文相关原则 |
+| 第二章 | [references/principles/aggregate.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/principles/aggregate.md) | 聚合相关原则（包含事件发布） |
+| 第三章 | [references/principles/domain-service.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/principles/domain-service.md) | 领域服务相关原则 |
+| 第四章 | [references/principles/application.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/principles/application.md) | 应用层相关原则（包含事件处理） |
+| 第五章 | [references/principles/starter.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/principles/starter.md) | 入口层（Starter 层）相关原则 |
 
 ### 检查清单（每章完成后自检）
 
 | 文件 | 对应章节 |
 |------|----------|
-| [references/checklists/chapter-01-checklist.md](references/checklists/chapter-01-checklist.md) | 第一章 |
-| [references/checklists/chapter-02-checklist.md](references/checklists/chapter-02-checklist.md) | 第二章 |
-| [references/checklists/chapter-03-checklist.md](references/checklists/chapter-03-checklist.md) | 第三章 |
-| [references/checklists/chapter-04-checklist.md](references/checklists/chapter-04-checklist.md) | 第四章 |
-| [references/checklists/chapter-05-checklist.md](references/checklists/chapter-05-checklist.md) | 第五章 |
-| [references/checklists/final-review-checklist.md](references/checklists/final-review-checklist.md) | 最终审查 |
-
-### 评分标准（每章完成后使用）
-
-| 文件 | 对应章节 | 满分 |
-|------|----------|------|
-| [references/scoring/chapter-01-scoring.md](references/scoring/chapter-01-scoring.md) | 第一章 | 100 |
-| [references/scoring/chapter-02-scoring.md](references/scoring/chapter-02-scoring.md) | 第二章 | 100 |
-| [references/scoring/chapter-03-scoring.md](references/scoring/chapter-03-scoring.md) | 第三章 | 100 |
-| [references/scoring/chapter-04-scoring.md](references/scoring/chapter-04-scoring.md) | 第四章 | 100 |
-| [references/scoring/chapter-05-scoring.md](references/scoring/chapter-05-scoring.md) | 第五章 | 100 |
-| [references/scoring/design-consistency-scoring.md](references/scoring/design-consistency-scoring.md) | 设计一致性 | 100 |
+| [references/checklists/chapter-01-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/chapter-01-checklist.md) | 第一章 |
+| [references/checklists/chapter-02-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/chapter-02-checklist.md) | 第二章 |
+| [references/checklists/chapter-03-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/chapter-03-checklist.md) | 第三章 |
+| [references/checklists/chapter-04-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/chapter-04-checklist.md) | 第四章 |
+| [references/checklists/chapter-05-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/chapter-05-checklist.md) | 第五章 |
+| [references/checklists/final-review-checklist.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/checklists/final-review-checklist.md) | 最终审查 |
 
 ### 输出模板
 
 | 文件 | 说明 |
 |------|------|
-| [assets/templates/domain-design-template.md](assets/templates/domain-design-template.md) | **领域设计文档模板**（最终产出） |
+| [assets/templates/domain-design-template.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/assets/templates/domain-design-template.md) | **领域设计文档模板**（最终产出） |
 
 ---
 
@@ -197,11 +175,11 @@ T23: 文档组装（依赖 T22）
 **输出**：`{功能名称}-领域设计文档.md`
 
 **流程**：
-1. 创建 22 个任务（TaskCreate）
+1. 创建 12 个任务（TaskCreate）
 2. 执行任务循环（实时显示进度）
-3. 每章完成后 3×PDCA 循环（原则检测→检查清单→评分）
+3. 每章完成后 Checklists 验证
 4. 每章完成后人工 Review
-5. 综合评分 ≥90 分交付
+5. 组装最终文档
 
 ### 场景 2：Review 设计质量
 
@@ -210,9 +188,8 @@ T23: 文档组装（依赖 T22）
 
 **流程**：
 1. 使用对应的检查清单自检
-2. 使用对应的评分标准评分
-3. 生成评分报告
-4. 输出改进建议
+2. 生成检查报告
+3. 输出改进建议
 
 ---
 
@@ -256,15 +233,14 @@ T23: 文档组装（依赖 T22）
 3. **文件持久化**：所有内容写入文件，不占用内存
 4. **摘要传递**：章节间只传递摘要
 
-详见：[references/workflow/context-optimization.md](references/workflow/context-optimization.md)
+详见：[references/workflow/context-optimization.md](../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/context-optimization.md)
 
 ### Q3：如何确保质量？
 
 **A**：多层次质量保证：
 1. **每章自检**：使用检查清单验证
-2. **每章评分**：使用评分标准量化
-3. **综合评分**：所有章节完成后加权评分
-4. **最终审查**：交付前使用 review-checklist 验证
+2. **人工 Review**：每章完成后等待用户确认
+3. **最终审查**：交付前使用 review-checklist 验证
 
 ### Q4：任务失败怎么办？
 
@@ -279,7 +255,7 @@ T23: 文档组装（依赖 T22）
 
 包含：
 - Roadmap 生成流程
-- 3×PDCA 章节生成详解
+- Checklists 驱动的 PDCA 章节生成详解
 - Task 管理规范
 - 人工 Review 流程
 - 上下文优化策略

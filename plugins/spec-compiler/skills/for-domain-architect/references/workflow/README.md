@@ -13,8 +13,8 @@
 | 了解整体流程 | [Roadmap 工作流](roadmap-workflow.md) |
 | 生成章节内容 | [PDCA 章节生成](pdca-chapter-generation.md) |
 | 管理 Task 执行 | [Task 管理规范](task-management.md) |
-| 处理人工 Review | [人工 Review 流程](human-review-workflow.md) |
-| 优化上下文 | [上下文优化策略](context-optimization.md) |
+| 处理人工 Review | [人工 Review 流程](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/human-review-workflow.md) |
+| 优化上下文 | [上下文优化策略](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/context-optimization.md) |
 | 查看技术细节 | [Task 实现细节](task-implementation-details.md) |
 
 ---
@@ -35,8 +35,8 @@
 | [roadmap-workflow.md](roadmap-workflow.md) | Roadmap 生成和进度展示 |
 | [pdca-chapter-generation.md](pdca-chapter-generation.md) | 3×PDCA 质量循环详解 |
 | [task-management.md](task-management.md) | Task 定义和执行规范 |
-| [human-review-workflow.md](human-review-workflow.md) | 人工审核交互流程 |
-| [context-optimization.md](context-optimization.md) | 上下文优化策略 |
+| [human-review-workflow.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/human-review-workflow.md) | 人工审核交互流程 |
+| [context-optimization.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/workflow/context-optimization.md) | 上下文优化策略 |
 | [task-implementation-details.md](task-implementation-details.md) | Task 实现技术细节 |
 
 ---
@@ -45,11 +45,11 @@
 
 | 章节 | 生成指令 |
 |------|----------|
-| 第一章：限界上下文 | [chapter-01-bounded-context.md](../chapter-instructions/chapter-01-bounded-context.md) |
-| 第二章：聚合设计 | [chapter-02-aggregate.md](../chapter-instructions/chapter-02-aggregate.md) |
-| 第三章：领域服务 | [chapter-03-domain-service.md](../chapter-instructions/chapter-03-domain-service.md) |
-| 第四章：应用层 | [chapter-04-application.md](../chapter-instructions/chapter-04-application.md) |
-| 第五章：入口层 | [chapter-05-starter.md](../chapter-instructions/chapter-05-starter.md) |
+| 第一章：限界上下文 | [chapter-01-bounded-context.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/chapter-instructions/chapter-01-bounded-context.md) |
+| 第二章：聚合设计 | [chapter-02-aggregate.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/chapter-instructions/chapter-02-aggregate.md) |
+| 第三章：领域服务 | [chapter-03-domain-service.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/chapter-instructions/chapter-03-domain-service.md) |
+| 第四章：应用层 | [chapter-04-application.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/chapter-instructions/chapter-04-application.md) |
+| 第五章：入口层 | [chapter-05-starter.md](../../../../../../claude-plugins-olzx/plugins/spec-compiler/skills/for-domain-architect/references/chapter-instructions/chapter-05-starter.md) |
 
 **相关文档**：
 - [设计原则](../principles/) - 每章的设计原则

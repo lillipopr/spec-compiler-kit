@@ -21,8 +21,8 @@ description: "详细描述"
 activeForm: "正在执行任务"
 dependencies: ["T1", "T2"]
 qualityGate:
-  type: "score|checklist|manual"
-  standard: "≥60 分|所有项通过|人工确认"
+  type: "checklist|manual"
+  standard: "所有项通过|人工确认"
   maxRetries: 3
 ```
 
@@ -74,30 +74,31 @@ output:
 
 ### 2. 生成型 Task
 
-**特点**：基于输入生成内容，经历 3×PDCA 循环
+**特点**：基于输入生成内容，经历 Checklists 验证
 
 ```yaml
 id: "T2"
-subject: "第一章 PDCA #1 - Principles 检测"
-description: "基于 principles 生成并检测问题"
-activeForm: "正在执行第一章 PDCA #1"
+subject: "第一章 PDCA - Checklists 检测"
+description: "基于章节指令生成内容，通过检查清单验证"
+activeForm: "正在执行第一章 PDCA"
 dependencies: ["T1"]
 qualityGate:
-  type: "principles"
-  standard: "修复所有 principles 问题"
+  type: "checklist"
+  standard: "通过所有检查清单项"
   maxRetries: 3
 input:
   prdSummary: "output/prd-summary.md"
-  instructionFile: "chapters/chapter-01-bounded-context.md"
-  principleFile: "principles/bounded-context.md"
+  instructionFile: "references/chapter-instructions/chapter-01-bounded-context.md"
+  checklistFile: "references/checklists/chapter-01-checklist.md"
 output:
-  contentFile: "output/chapter-01-v1.md"
-  issuesFile: "output/chapter-01-issues-principles.md"
+  contentFile: "output/chapter-01.md"
+  issuesFile: "output/chapter-01-issues-checklists.md"
+  summaryFile: "output/chapter-01-summary.md"
 ```
 
 **执行流程**：
 ```
-1. 准备上下文
+1. 准备上下文（PRD 摘要 + 章节指令 + 检查清单）
 2. 生成内容
 3. 检测问题
 4. 修复问题
@@ -109,19 +110,17 @@ output:
 **特点**：需要用户确认才能继续
 
 ```yaml
-id: "T5"
+id: "T3"
 subject: "第一章人工 Review"
 description: "等待人类审核确认第一章内容"
 activeForm: "正在等待第一章 Review"
-dependencies: ["T4"]
+dependencies: ["T2"]
 qualityGate:
   type: "manual"
   standard: "人工确认"
 input:
   chapterFile: "output/chapter-01.md"
-  scoreFile: "output/chapter-01-score.md"
   issuesFiles:
-    - "output/chapter-01-issues-principles.md"
     - "output/chapter-01-issues-checklists.md"
 output: {}
 action:
@@ -142,11 +141,11 @@ action:
 **特点**：读取多个文件，组装最终输出
 
 ```yaml
-id: "T-final"
+id: "T12"
 subject: "文档组装"
 description: "读取所有章节文件，使用模板组装最终文档"
 activeForm: "正在组装最终文档"
-dependencies: ["T5", "T9", "T13", "T17", "T21"]
+dependencies: ["T3", "T5", "T7", "T9", "T11"]
 qualityGate:
   type: "checklist"
   standard: "所有章节已填充"
@@ -183,21 +182,22 @@ output:
 │
 ├─ [T1] PRD 分析与摘要（依赖：无）
 │
-├─ [T2] 第一章 PDCA #1（依赖：T1）
-├─ [T3] 第一章 PDCA #2（依赖：T2）
-├─ [T4] 第一章 PDCA #3（依赖：T3）
-├─ [T5] 第一章人工 Review（依赖：T4）
+├─ [T2] 第一章 PDCA（依赖：T1）
+├─ [T3] 第一章人工 Review（依赖：T2）
 │
-├─ [T6] 第二章 PDCA #1（依赖：T5）
-├─ [T7] 第二章 PDCA #2（依赖：T6）
-├─ [T8] 第二章 PDCA #3（依赖：T7）
-├─ [T9] 第二章人工 Review（依赖：T8）
+├─ [T4] 第二章 PDCA（依赖：T3）
+├─ [T5] 第二章人工 Review（依赖：T4）
 │
-├─ [T10-T13] 第三章（依赖：T9）
-├─ [T14-T17] 第四章（依赖：T13）
-├─ [T18-T21] 第五章（依赖：T17）
+├─ [T6] 第三章 PDCA（依赖：T5）
+├─ [T7] 第三章人工 Review（依赖：T6）
 │
-└─ [T-final] 文档组装（依赖：T21）
+├─ [T8] 第四章 PDCA（依赖：T7）
+├─ [T9] 第四章人工 Review（依赖：T8）
+│
+├─ [T10] 第五章 PDCA（依赖：T9）
+├─ [T11] 第五章人工 Review（依赖：T10）
+│
+└─ [T12] 文档组装（依赖：T11）
 ```
 
 ### 依赖规则
@@ -206,8 +206,8 @@ output:
 |------|------|------|
 | **顺序依赖** | 必须按顺序执行 | T2 依赖 T1 |
 | **并行独立** | 无依赖可并行 | （暂无） |
-| **聚合依赖** | 依赖多个任务 | T-final 依赖所有章节 |
-| **交互阻塞** | 交互型任务阻塞后续 | T5 阻塞 T6 |
+| **聚合依赖** | 依赖多个任务 | T12 依赖所有章节 |
+| **交互阻塞** | 交互型任务阻塞后续 | T3 阻塞 T4 |
 
 ### 依赖验证
 
@@ -278,9 +278,7 @@ pending → in_progress → completed
 | 类型 | 验证方式 | 标准 |
 |------|---------|------|
 | **none** | 无验证 | - |
-| **principles** | 检测原则问题 | 修复所有问题 |
 | **checklist** | 检查清单验证 | 所有项通过 |
-| **score** | 评分验证 | ≥60 分 |
 | **manual** | 人工确认 | 用户确认 |
 
 ### 质量关卡执行
@@ -293,25 +291,11 @@ function checkQualityGate(task, result) {
     case 'none':
       return { passed: true };
 
-    case 'score':
-      if (result.score >= 60) {
-        return { passed: true };
-      } else {
-        return { passed: false, message: `评分 ${result.score} < 60` };
-      }
-
     case 'checklist':
       if (result.allItemsPassed) {
         return { passed: true };
       } else {
         return { passed: false, message: '检查清单未全部通过' };
-      }
-
-    case 'principles':
-      if (result.noIssues) {
-        return { passed: true };
-      } else {
-        return { passed: false, message: '存在原则问题' };
       }
 
     case 'manual':
@@ -369,36 +353,36 @@ function executeTask(task) {
 
 ```
 ==================================================
-任务进度：5/21 (24%)
+任务进度：3/11 (27%)
 ==================================================
-✅ 已完成: 5
+✅ 已完成: 3
 🔄 进行中: 1
-⏳ 待执行: 15
+⏳ 待执行: 7
 ==================================================
 ✅ T1: PRD 分析与摘要
-✅ T2-T5: 第一章 - 限界上下文设计 [Review 通过]
-🔄 T6: 第二章 PDCA #1 [执行中]
-⏳ T7-T9: 第二章 PDCA #2-3 + Review
-⏳ T10-T13: 第三章
-⏳ T14-T17: 第四章
-⏳ T18-T21: 第五章
-⏳ T-final: 文档组装
+✅ T2-T3: 第一章 - 限界上下文设计 [Review 通过]
+🔄 T4: 第二章 PDCA [执行中]
+⏳ T5: 第二章 Review
+⏳ T6-T7: 第三章
+⏳ T8-T9: 第四章
+⏳ T10-T11: 第五章
+⏳ T12: 文档组装
 ==================================================
 ```
 
 ### 单个任务详情
 
 ```
-🔄 T6: 第二章 PDCA #1 - Principles 检测
+🔄 T4: 第二章 PDCA - Checklists 检测
 
-描述：基于 principles 生成并检测问题
+描述：基于章节指令生成内容，通过检查清单验证
 
 依赖：
-  ✅ T5: 第一章人工 Review
+  ✅ T3: 第一章人工 Review
 
 质量关卡：
-  类型：principles
-  标准：修复所有 principles 问题
+  类型：checklist
+  标准：通过所有检查清单项
   当前：第 1 次尝试
 
 进度：
@@ -413,17 +397,15 @@ function executeTask(task) {
 
 ```
 第二章：聚合设计
-├─ ✅ T6: PDCA #1 - Principles 检测（3 问题 → 已修复）
-├─ ✅ T7: PDCA #2 - Checklists 检测（2 项不通过 → 已修复）
-├─ 🔄 T8: PDCA #3 - Scoring 检测（评分中...）
-└─ ⏳ T9: 人工 Review
+├─ 🔄 T4: PDCA - Checklists 检测（2 项不通过 → 修复中）
+└─ ⏳ T5: 人工 Review
 ```
 
 ---
 
 ## 实现细节
 
-**Task 持久化和错误处理的详细实现**请参考：[task-implementation-details.md](./task-implementation-details.md)
+**Task 持久化和错误处理的详细实现**请参考：[task-implementation-details.md](task-implementation-details.md)
 
 包含内容：
 - tasks.json 和 task-history.json 格式定义
