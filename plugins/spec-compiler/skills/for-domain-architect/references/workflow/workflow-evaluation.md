@@ -173,8 +173,8 @@
 // 检查命名是否符合规范
 const namingRules = {
   aggregate: /^[A-Z][a-zA-Z0-9]*$/,           // 聚合名：大写开头
-  domainService: /^[A-Z][a-zA-Z0-9]*Domain$/, // 领域服务：聚合名 + Domain
-  applicationService: /^[A-Z][a-zA-Z0-9]*Application$/, // 应用服务：聚合名 + Application
+  domain: /^[A-Z][a-zA-Z0-9]*Domain$/, // 领域服务：聚合名 + Domain
+  application: /^[A-Z][a-zA-Z0-9]*Application$/, // 应用服务：聚合名 + Application
   domainEvent: /^[A-Z][a-zA-Z0-9]*ActivatedEvent$/, // 领域事件：聚合名 + 动词 + Event
   param: /^[A-Z][a-zA-Z0-9]*Param$/           // 参数：动作 + 聚合名 + Param
 }

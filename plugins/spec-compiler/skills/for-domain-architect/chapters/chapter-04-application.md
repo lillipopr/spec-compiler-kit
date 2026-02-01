@@ -90,6 +90,7 @@
 
 ❌ 差的服务命名
 - MembershipService（与领域服务混淆）
+- MembershipApplicationService（啰嗦，不够简洁）
 - MembershipController（Controller 层命名）
 - 会员服务（中文，不符合代码规范）
 ```

@@ -186,7 +186,7 @@ class MembershipApplication {
 
 **命名规范**：
 - ✅ 好的服务命名：MembershipApplication、CouponApplication、PaymentApplication
-- ❌ 差的服务命名：MembershipService（与领域服务混淆）、MembershipController（Controller 层命名）
+- ❌ 差的服务命名：MembershipService（与领域服务混淆）、MembershipApplicationService（啰嗦，不够简洁）、MembershipController（Controller 层命名）
 
 **扣分项**：
 - 命名不规范：扣 3 分/个

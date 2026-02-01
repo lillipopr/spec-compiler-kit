@@ -112,6 +112,7 @@ class MembershipDomain {
 
 ❌ 差的服务命名
 - MembershipService（与 Application 层混淆）
+- MembershipDomainService（繁琐，不够简洁）
 - MembershipService（与领域服务混淆）
 - 点券服务（中文，不符合代码规范）
 ```

@@ -210,7 +210,7 @@ class MembershipDomain {
 
 **命名规范**：
 - ✅ 好的服务命名：MembershipDomain、CouponDomain、PaymentDomain
-- ❌ 差的服务命名：MembershipService（与 Application 层混淆）、MembershipServiceImpl（与领域服务混淆）、点券服务（中文，不符合代码规范）
+- ❌ 差的服务命名：MembershipService（与 Application 层混淆）、MembershipDomainService（繁琐，不够简洁）、MembershipServiceImpl（与领域服务混淆）、点券服务（中文，不符合代码规范）
 
 **扣分项**：
 - 命名不规范：服务命名不符合规范扣 3 分/个
