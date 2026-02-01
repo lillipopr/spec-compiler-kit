@@ -1,6 +1,6 @@
 ---
 name: for-domain-architect
-description: 资深领域架构师，将 PRD 转化为领域设计文档。支持 6 章结构生成、质量评分、任务工作流、上下文优化。
+description: 资深领域架构师，将 PRD 转化为领域设计文档。支持 5 章结构生成、质量评分、任务工作流、上下文优化。
 
 当用户询问以下问题时触发：
 - "领域建模"
@@ -15,14 +15,13 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 
 ## 核心能力
 
-将 PRD 文档转化为《领域设计文档》，按 **6 个章节**顺序生成：
+将 PRD 文档转化为《领域设计文档》，按 **5 个章节**顺序生成：
 
 1. **第一章：限界上下文设计** - 业务能力分析、上下文划分、上下文映射
-2. **第二章：聚合设计** - 聚合总览、聚合根设计、实体设计、值对象设计
+2. **第二章：聚合设计** - 聚合总览、聚合根设计、实体设计、值对象设计（包含事件发布设计）
 3. **第三章：领域服务设计** - 领域服务判断、服务列表、服务详细设计
-4. **第四章：应用层设计** - 应用服务列表、用户行为列表、系统行为列表
-5. **第五章：领域事件** - 事件列表、事件详细设计
-6. **第六章：入口层设计** - Controller 层、MQ 层、Task 层（Starter 层）
+4. **第四章：应用层设计** - 应用服务列表、用户行为列表、系统行为列表、事件处理
+5. **第五章：入口层设计** - Controller 层、MQ 层、Task 层（Starter 层）
 
 ---
 
@@ -31,9 +30,8 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 **90 分及格线**：每章独立评分 ≥60 分，综合评分 ≥90 分交付。
 
 ```
-综合评分 = Chapter-1 × 15% + Chapter-2 × 25% + Chapter-3 × 10% +
-           Chapter-4 × 15% + Chapter-5 × 10% + Chapter-6 × 10% +
-           设计一致性 × 15%
+综合评分 = Chapter-1 × 15% + Chapter-2 × 30% + Chapter-3 × 10% +
+           Chapter-4 × 20% + Chapter-5 × 10% + 设计一致性 × 15%
 ```
 
 ---
@@ -49,7 +47,7 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 | ✅ **错误隔离** | 失败任务不影响其他，单点重试 |
 | ✅ **上下文隔离** | 每个任务独立上下文，避免撑爆 |
 
-### 任务树（9 个独立任务）
+### 任务树（7 个独立任务）
 
 ```
 根任务：生成领域设计文档
@@ -73,20 +71,16 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 │   ├─ 输出：chapter-04.md + summary + score
 │   └─ 质量关卡：≥60 分
 │
-├─ [T6] 第五章：领域事件（依赖：T5）
-│   ├─ 输出：chapter-05.md + summary + score
-│   └─ 质量关卡：≥60 分
-│
-├─ [T7] 第六章：入口层设计（依赖：T6）
+├─ [T6] 第五章：入口层设计（依赖：T5）
 │   ├─ 输出：chapter-06.md + summary + score
 │   └─ 质量关卡：≥60 分
 │
-├─ [T8] 综合评分（依赖：T2-T7）
+├─ [T7] 综合评分（依赖：T2-T6）
 │   ├─ 输入：所有章节评分
 │   ├─ 输出：score-report.md
 │   └─ 质量关卡：≥90 分
 │
-└─ [T9] 文档组装（依赖：T8）
+└─ [T8] 文档组装（依赖：T7）
     ├─ 输入：所有章节文件
     ├─ 输出：{功能名称}-领域设计文档.md
     └─ 质量关卡：最终审查
@@ -103,11 +97,10 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 | 章节 | 文件 | 说明 |
 |------|------|------|
 | 第一章 | [chapters/chapter-01-bounded-context.md](chapters/chapter-01-bounded-context.md) | 限界上下文设计 |
-| 第二章 | [chapters/chapter-02-aggregate.md](chapters/chapter-02-aggregate.md) | 聚合设计 |
+| 第二章 | [chapters/chapter-02-aggregate.md](chapters/chapter-02-aggregate.md) | 聚合设计（包含事件发布） |
 | 第三章 | [chapters/chapter-03-domain-service.md](chapters/chapter-03-domain-service.md) | 领域服务设计 |
-| 第四章 | [chapters/chapter-04-application.md](chapters/chapter-04-application.md) | 应用层设计 |
-| 第五章 | [chapters/chapter-05-domain-event.md](chapters/chapter-05-domain-event.md) | 领域事件 |
-| 第六章 | [chapters/chapter-06-starter.md](chapters/chapter-06-starter.md) | 入口层设计（Starter 层） |
+| 第四章 | [chapters/chapter-04-application.md](chapters/chapter-04-application.md) | 应用层设计（包含事件处理） |
+| 第五章 | [chapters/chapter-06-starter.md](chapters/chapter-06-starter.md) | 入口层设计（Starter 层） |
 
 ---
 
@@ -129,11 +122,10 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 | 章节 | 原则文件 | 说明 |
 |------|---------|------|
 | 第一章 | [references/principles/bounded-context.md](references/principles/bounded-context.md) | 限界上下文相关原则 |
-| 第二章 | [references/principles/aggregate.md](references/principles/aggregate.md) | 聚合相关原则 |
+| 第二章 | [references/principles/aggregate.md](references/principles/aggregate.md) | 聚合相关原则（包含事件发布） |
 | 第三章 | [references/principles/domain-service.md](references/principles/domain-service.md) | 领域服务相关原则 |
-| 第四章 | [references/principles/application.md](references/principles/application.md) | 应用层相关原则 |
-| 第五章 | [references/principles/domain-event.md](references/principles/domain-event.md) | 领域事件相关原则 |
-| 第六章 | [references/principles/starter.md](references/principles/starter.md) | 入口层（Starter 层）相关原则 |
+| 第四章 | [references/principles/application.md](references/principles/application.md) | 应用层相关原则（包含事件处理） |
+| 第五章 | [references/principles/starter.md](references/principles/starter.md) | 入口层（Starter 层）相关原则 |
 
 ### 命名约定
 
@@ -149,8 +141,7 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 | [references/checklists/chapter-02-checklist.md](references/checklists/chapter-02-checklist.md) | 第二章 |
 | [references/checklists/chapter-03-checklist.md](references/checklists/chapter-03-checklist.md) | 第三章 |
 | [references/checklists/chapter-04-checklist.md](references/checklists/chapter-04-checklist.md) | 第四章 |
-| [references/checklists/chapter-05-checklist.md](references/checklists/chapter-05-checklist.md) | 第五章 |
-| [references/checklists/chapter-06-checklist.md](references/checklists/chapter-06-checklist.md) | 第六章 |
+| [references/checklists/chapter-06-checklist.md](references/checklists/chapter-06-checklist.md) | 第五章 |
 | [references/checklists/final-review-checklist.md](references/checklists/final-review-checklist.md) | 最终审查 |
 
 ### 评分标准（每章完成后使用）
@@ -161,8 +152,7 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 | [references/scoring/chapter-02-scoring.md](references/scoring/chapter-02-scoring.md) | 第二章 | 100 |
 | [references/scoring/chapter-03-scoring.md](references/scoring/chapter-03-scoring.md) | 第三章 | 100 |
 | [references/scoring/chapter-04-scoring.md](references/scoring/chapter-04-scoring.md) | 第四章 | 100 |
-| [references/scoring/chapter-05-scoring.md](references/scoring/chapter-05-scoring.md) | 第五章 | 100 |
-| [references/scoring/chapter-06-scoring.md](references/scoring/chapter-06-scoring.md) | 第六章 | 100 |
+| [references/scoring/chapter-06-scoring.md](references/scoring/chapter-06-scoring.md) | 第五章 | 100 |
 | [references/scoring/design-consistency-scoring.md](references/scoring/design-consistency-scoring.md) | 设计一致性 | 100 |
 
 ### 输出模板
@@ -181,7 +171,7 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 **输出**：`{功能名称}-领域设计文档.md`
 
 **流程**：
-1. 创建 9 个任务（TaskCreate）
+1. 创建 7 个任务（TaskCreate）
 2. 执行任务循环（实时显示进度）
 3. 每个任务完成后自检评分
 4. 综合评分 ≥90 分交付
@@ -266,6 +256,20 @@ description: 资深领域架构师，将 PRD 转化为领域设计文档。支�
 ---
 
 ## 更新日志
+
+### v2.1 (2026-02-01)
+
+**重大更新**：
+- ⭐ 删除独立的领域事件章节（第五章）
+- ⭐ 将事件发布设计整合到聚合根行为设计模板
+- ⭐ 将事件处理设计整合到应用层设计章节
+- ⭐ 从 6 章结构调整为 5 章结构
+- ⭐ 更新评分权重分配（第二章 30%，第四章 20%）
+
+**新特性**：
+- 7 个独立任务（原 9 个）
+- 事件产生在聚合根，事件消费在应用层
+- 更符合 DDD 分层原则
 
 ### v2.0 (2024-02-01)
 
