@@ -102,7 +102,6 @@
 |-------|------|------|-------|---------|
 | STR-{VO缩写}-01 | 结构约束 | {约束描述} | `ASSERT {条件表达式}` | 创建时 |
 
-**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -169,7 +168,6 @@
 | -------- | ---- | ------ | -------- |
 | {行为1}() | {参数列表} | {返回类型} | {业务规则描述} |
 
-**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -223,8 +221,6 @@
     ├─ 是 → 【聚合根】
     └─ 否 → 需收紧对象访问边界
 ```
-
-**参考文档**：[references/principles/aggregate.md](references/principles/aggregate.md)
 
 ---
 
@@ -633,20 +629,6 @@ create(params: { {参数1}: {类型1}, {参数2}: {类型2} }): {聚合根名称
 - [ ] 每个行为都有约束定义
 - [ ] 每个行为都有用例设计
 - [ ] 所有约束都有 ID 和伪代码
-
-### 评分标准
-
-使用 [references/scoring/chapter-02-scoring.md](references/scoring/chapter-02-scoring.md) 评分。
-
-**及格线**：60 分
-
-**评分维度**：
-- 值对象识别（10 分）
-- 实体识别（10 分）
-- 聚合根识别（20 分）
-- 聚合边界设计（20 分）
-- 约束定义（20 分）
-- 用例设计（20 分）
 
 ---
 

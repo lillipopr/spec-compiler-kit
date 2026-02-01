@@ -452,17 +452,6 @@ async {方法名}(cmd: {Command类型}): Promise<{Result类型}>
 - [ ] 应用服务不包含业务逻辑（业务逻辑在领域层）
 - [ ] 应用服务负责事务管理
 
-### 评分标准
-
-使用 [references/scoring/chapter-04-scoring.md](references/scoring/chapter-04-scoring.md) 评分。
-
-**及格线**：60 分
-
-**评分维度**：
-- 服务识别（30 分）
-- 服务设计（40 分）
-- 约束定义（30 分）
-
 ---
 
 ## 常见问题

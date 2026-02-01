@@ -215,16 +215,6 @@
 - [ ] 服务不包含实体的行为
 - [ ] 服务不修改聚合状态（或协调多个聚合）
 
-### 评分标准
-
-使用 [references/scoring/chapter-03-scoring.md](references/scoring/chapter-03-scoring.md) 评分。
-
-**及格线**：60 分
-
-**评分维度**：
-- 服务识别（30 分）
-- 服务设计（40 分）
-- 约束定义（30 分）
 
 ---
 

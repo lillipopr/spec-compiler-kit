@@ -84,7 +84,6 @@
 |--------|----------|----------|----------|
 | {能力组1} | {团队A} | {人数} | {联系方式} |
 
-**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
@@ -104,8 +103,6 @@
 - 一个上下文 = 一组高内聚的能力
 - 上下文间低耦合
 - 上下文边界清晰
-
-**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
@@ -165,8 +162,6 @@
 | 防腐层位置 | 目标上下文 | 转换逻辑 |
 |-----------|-----------|---------|
 | {位置} | {上下文C} | 将 C 的 DTO 转换为本域的领域模型 |
-
-**参考文档**：[references/principles/bounded-context.md](references/principles/bounded-context.md)
 
 ---
 
@@ -298,16 +293,6 @@ graph TB
 - [ ] 防腐层需求已识别
 - [ ] 上下文映射图已绘制
 
-### 评分标准
-
-使用 [references/scoring/chapter-01-scoring.md](references/scoring/chapter-01-scoring.md) 评分。
-
-**及格线**：60 分
-
-**评分维度**：
-- 业务能力分析（30 分）
-- 限界上下文划分（40 分）
-- 上下文映射（30 分）
 
 ---
 
