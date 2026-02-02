@@ -3,7 +3,7 @@ description: 调用限界上下文设计Skill，根据 PRD 生成限界上下文
 calls-skill: spec-compiler:ddd-01-bounded-context-skill
 ---
 
-# /ddd-01-bounded-context - 限界上下文设计命令
+# /ddd-01-bc - 限界上下文设计命令
 
 此命令调用 **ddd-01-bounded-context-skill** Skill，从 PRD 生成限界上下文设计文档。
 
@@ -37,7 +37,7 @@ calls-skill: spec-compiler:ddd-01-bounded-context-skill
 ├─────────────────────────────────────────────────────────────┤
 │ 1.1 读取 PRD 文档                                             │
 │ 1.2 提取关键信息                                              │
-│ 1.3 生成大纲文件（ddd-01-bounded-context-outline.md）       │
+│ 1.3 生成大纲文件（ddd-01-bc-outline.md）       │
 │ 1.4 显示大纲内容，提示用户编辑讨论                             │
 └─────────────────────────────────────────────────────────────┘
                               ↓
@@ -53,15 +53,15 @@ calls-skill: spec-compiler:ddd-01-bounded-context-skill
 │ 阶段 3：详细文档生成                                          │
 ├─────────────────────────────────────────────────────────────┤
 │ 3.1 基于定稿大纲生成详细文档                                   │
-│ 3.2 输出文件：ddd-01-bounded-context.md                      │
+│ 3.2 输出文件：ddd-01-bc.md                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ## 输出文件
 
-| 文件 | 说明 |
-|------|------|
-| `ddd-01-bounded-context-outline.md` | 大纲版（可编辑讨论） |
+| 文件                          | 说明 |
+|-----------------------------|------|
+| `ddd-01-bc-outline.md`      | 大纲版（可编辑讨论） |
 | `ddd-01-bounded-context.md` | 详细版（定稿后生成） |
 
 ## 核心特性
@@ -73,7 +73,7 @@ calls-skill: spec-compiler:ddd-01-bounded-context-skill
 ## 示例
 
 ```
-用户: /ddd-01-bounded-context
+用户: /ddd-01-bc
 
 Claude: 请提供 PRD 文档路径：
 
@@ -86,7 +86,7 @@ Claude: 请提供输出目录（直接回车使用默认 ./output）：
 ==================================================
 限界上下文设计大纲已生成
 ==================================================
-文件：./docs/08-functions/03-user-wallet/output/ddd-01-bounded-context-outline.md
+文件：./docs/08-functions/03-user-wallet/output/ddd-01-bc-outline.md
 
 【下一步】
 1. 请编辑大纲文件，调整上下文划分、领域类型等
@@ -101,7 +101,7 @@ Claude: 请提供输出目录（直接回车使用默认 ./output）：
 ==================================================
 限界上下文设计文档生成完成
 ==================================================
-大纲：ddd-01-bounded-context-outline.md
+大纲：ddd-01-bc-outline.md
 详细：ddd-01-bounded-context.md
 
 【检查清单】
