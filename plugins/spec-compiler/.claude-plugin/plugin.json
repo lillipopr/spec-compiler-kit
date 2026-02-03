@@ -1,6 +1,6 @@
 {
   "name": "spec-compiler",
-  "version": "3.0.16",
+  "version": "3.0.17",
   "description": "将模糊需求编译为确定性规格文档，实现'人管变化，AI 写实现'",
   "author": {
     "name": "zxq",
